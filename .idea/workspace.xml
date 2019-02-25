@@ -2,31 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa6fee21-6582-4eca-b5ca-0dc3bcaa5559" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/commands/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/commands/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/Cube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeDimensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeDimensions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeResourceDataDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeResourceDataDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceDataDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceDataDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/Cube.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeDimensions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeResourceDataDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/Cylinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderDimensions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceDataDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityResourceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityResourceData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResourcePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResourcePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Serializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Serializable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializationUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializationUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedCube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedCylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShapeResourceData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityResourceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityResourceData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializationUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/WebServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/WebServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CubeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CubeResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CylinderResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CylinderResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/EntityResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/EntityResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CubeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/ShapeResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CylinderResource.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,10 +39,79 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13">
-              <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+            <state relative-caret-position="570">
+              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="21" lean-forward="true" selection-start-line="6" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/CubeDimensions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeResourceData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="28" column="23" lean-forward="true" selection-start-line="9" selection-end-line="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityResourceData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="60">
+              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -62,46 +132,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityResourceData.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/Shape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#630#631#0" expanded="true" />
-                <element signature="e#661#662#0" expanded="true" />
-                <element signature="e#716#717#0" expanded="true" />
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#793#794#0" expanded="true" />
-                <element signature="e#826#827#0" expanded="true" />
-                <element signature="e#878#879#0" expanded="true" />
-                <element signature="e#922#923#0" expanded="true" />
-                <element signature="e#959#960#0" expanded="true" />
-                <element signature="e#992#993#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1088#1089#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializationUtility.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-215">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/EntityResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="74" column="89" selection-start-line="74" selection-start-column="89" selection-end-line="74" selection-end-column="89" />
+            <state relative-caret-position="285">
+              <caret line="25" lean-forward="true" selection-start-line="5" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,47 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResource.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="116" column="2" selection-start-line="116" selection-start-column="2" selection-end-line="116" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-500">
-              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="62" />
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,15 +171,17 @@
       <find>Animal</find>
       <find>animal</find>
       <find>gson</find>
+      <find>Entity</find>
+      <find>entity</find>
+      <find>checkBlo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/DAO/AnimalDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/requests/AnimalRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/models/AnimalRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/models/Animal.java" />
@@ -204,11 +201,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Utility.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Utility.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/AnimalResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CylinderResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CubeResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCylinder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/Cylinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeDimensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/Cube.java" />
@@ -216,21 +211,36 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/WebServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/EntityResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShape.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/enums/ShapeType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializationUtility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShapeAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShapeResourceData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/Model.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/Shape.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Serializable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityResourceData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/ShapeResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityResourceData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/Entity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/CubeDimensions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeResourceData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1984" />
-    <option name="y" value="102" />
-    <option name="width" value="1920" />
-    <option name="height" value="942" />
+    <option name="x" value="39" />
+    <option name="y" value="53" />
+    <option name="width" value="1680" />
+    <option name="height" value="926" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -315,27 +325,28 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="terraform" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="cube" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cocoapebbles-terraform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TerraformPlugin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="terraform" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="cylinder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cocoapebbles-terraform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TerraformPlugin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="terraform" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocoapebbles-terraform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TerraformPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="terraform" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="shape" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cocoapebbles-terraform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TerraformPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="terraform" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="shape" type="462c0819:PsiDirectoryNode" />
+              <item name="ShapeFactory.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="cocoapebbles-terraform" type="b2602c69:ProjectViewProjectNode" />
@@ -378,12 +389,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550873638544" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551121370163" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -459,9 +470,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1984" y="102" width="1920" height="942" extended-state="0" />
+    <frame x="39" y="53" width="1680" height="926" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23961662" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25152627" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -475,7 +487,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32853717" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -489,12 +501,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/controllers/models/animal/AnimalDAO.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/controllers/models/animal/Animal.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeResourceData.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/ResourceData.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/constants/Events.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/animal/AnimalRequest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api/1.13-R0.1-SNAPSHOT/spigot-api-1.13-R0.1-20180826.040111-146.jar!/org/bukkit/Location.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -503,42 +509,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/DAOFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/utility/Utility.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CubeResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="102" column="2" selection-start-line="102" selection-start-column="2" selection-end-line="102" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedCylinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedCube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Serializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCylinder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -587,76 +558,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/Cylinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="72" column="2" selection-start-line="72" selection-start-column="2" selection-end-line="72" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeDimensions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceDataDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderDimensions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeResourceDataDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-530">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CylinderResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/Cube.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="2" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/Cylinder.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeDimensions.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderRequest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderDimensions.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeResourceDataDAO.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/CubeRequest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/CylinderResource.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/enums/ResourceStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -671,52 +579,188 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="67" column="50" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="50" />
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/enums/ShapeType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeResourceDataDAO.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceDataDAO.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cube/Cube.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/cylinder/CylinderResourceData.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityResourceData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/Dimensions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-            <element signature="e#661#662#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#878#879#0" expanded="true" />
-            <element signature="e#922#923#0" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#992#993#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/CylinderDimensions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializationUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-215">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="210">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" selection-start-line="18" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShapeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntityResourceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="65" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/EntityResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="29" column="10" selection-start-line="22" selection-end-line="84" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedShapeResourceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/Serializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/serialization/SerializedEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="45" column="116" selection-start-line="45" selection-start-column="116" selection-end-line="45" selection-end-column="116" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/DAOFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/ShapeResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/ResourceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/CubeDimensions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -725,8 +769,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityResourceData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="60">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -735,59 +779,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="60">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/DataResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ProviderUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="285">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/ShapeResourceData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="210">
+          <caret line="28" column="23" lean-forward="true" selection-start-line="9" selection-end-line="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/shape/Shape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="25" lean-forward="true" selection-start-line="5" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceCube.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="116" column="2" selection-start-line="116" selection-start-column="2" selection-end-line="116" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/web/resources/EntityResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="74" column="89" selection-start-line="74" selection-start-column="89" selection-end-line="74" selection-end-column="89" />
+        <state relative-caret-position="483">
+          <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/models/entity/EntityDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/Resource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cocoapebbles/terraform/provider/ResourceEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-500">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="62" />
+        <state relative-caret-position="120">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="6" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

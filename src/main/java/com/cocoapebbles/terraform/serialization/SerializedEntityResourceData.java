@@ -3,7 +3,7 @@ package com.cocoapebbles.terraform.serialization;
 import com.cocoapebbles.terraform.models.entity.EntityResourceData;
 
 import java.util.List;
-public class SerializedEntityResourceData {
+public class SerializedEntityResourceData implements Serializable{
     private List<Integer> location;
     private String entityType;
     private String customName;

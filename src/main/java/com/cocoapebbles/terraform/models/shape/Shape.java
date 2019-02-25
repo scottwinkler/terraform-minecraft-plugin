@@ -1,14 +1,12 @@
-package com.cocoapebbles.terraform.models.entity;
+package com.cocoapebbles.terraform.models.shape;
 
 import com.cocoapebbles.terraform.enums.ResourceStatus;
 import com.cocoapebbles.terraform.models.Model;
 
-import java.util.UUID;
-
-public class Entity implements Model {
-    String id;
-    EntityResourceData entityResourceData;
-    ResourceStatus resourceStatus;
+public class Shape implements Model {
+    private String id;
+    private ShapeResourceData shapeResourceData;
+    private ResourceStatus resourceStatus;
 
     public String getId() {
         return id;
@@ -18,12 +16,12 @@ public class Entity implements Model {
         this.id = id;
     }
 
-    public EntityResourceData getEntityResourceData() {
-        return entityResourceData;
+    public ShapeResourceData getShapeResourceData() {
+        return shapeResourceData;
     }
 
-    public void setEntityResourceData(EntityResourceData entityResourceData) {
-        this.entityResourceData = entityResourceData;
+    public void setShapeResourceData(ShapeResourceData shapeResourceData) {
+        this.shapeResourceData = shapeResourceData;
     }
 
     public ResourceStatus getResourceStatus() {
@@ -33,5 +31,4 @@ public class Entity implements Model {
     public void setResourceStatus(ResourceStatus resourceStatus) {
         this.resourceStatus = resourceStatus;
     }
-
 }

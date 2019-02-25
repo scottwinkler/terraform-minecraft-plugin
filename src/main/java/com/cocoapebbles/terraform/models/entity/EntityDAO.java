@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-//should use the build in yaml instead of json....
 public class EntityDAO {
     private static EntityDAO instance = null;
     private static String dirPath;
@@ -27,7 +26,7 @@ public class EntityDAO {
     protected EntityDAO() {
         // constructor is protected so that it can't be called from the outside
         logger = BukkitController.getLogger();
-        dirPath = BukkitController.getDataDir();
+        dirPath = BukkitController.getDataDir()+"/data/entity/";
         try {
             FileUtils.forceMkdir(new File(dirPath));
         }catch(IOException e){
@@ -36,7 +35,7 @@ public class EntityDAO {
     }
 
     public void deleteEntity(Entity entity){
-        File file = new File(dirPath+"/"+entity.getId()+".json");
+        File file = new File(dirPath+entity.getId()+".json");
         try {
             FileUtils.deleteQuietly(file);
         }catch(Exception e){
@@ -45,7 +44,7 @@ public class EntityDAO {
     }
 
     public void updateEntity(Entity entity){
-        File file = new File(dirPath+"/"+entity.getId()+".json");
+        File file = new File(dirPath+entity.getId()+".json");
         try {
             ObjectMapper mapper = new ObjectMapper();
             SerializedEntity serializedEntity = SerializationUtility.serializeEntity(entity);
@@ -60,7 +59,7 @@ public class EntityDAO {
 
     public void saveEntity(Entity entity){
         try{
-            File file = new File(dirPath+"/"+ entity.getId()+".json");
+            File file = new File(dirPath+ entity.getId()+".json");
             ObjectMapper mapper = new ObjectMapper();
             SerializedEntity serializedEntity = SerializationUtility.serializeEntity(entity);
             mapper.writeValue(file,serializedEntity);
@@ -72,7 +71,7 @@ public class EntityDAO {
     public Entity getEntity(String entityId){
         Entity entity = null;
         try{
-            String s = FileUtils.readFileToString(new File(dirPath+"/"+entityId+".json"),"UTF-8");
+            String s = FileUtils.readFileToString(new File(dirPath+entityId+".json"),"UTF-8");
             ObjectMapper mapper = new ObjectMapper();
             //SerializedEntity serializedEntity = SerializationUtility.serializeEntity(entity);
             SerializedEntity serializedEntity = mapper.readValue(s,SerializedEntity.class);

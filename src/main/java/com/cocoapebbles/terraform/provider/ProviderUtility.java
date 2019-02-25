@@ -25,13 +25,9 @@ public class ProviderUtility {
         state.update(true);
     }
 
-    public static String checkBlock(Location location){
-        World world = location.getWorld();
-        Block block = world.getBlockAt(location);
-        BlockState state = block.getState();
-        return state.getType().name();
-    }
+    public static void scheduleTask(Runnable task){
 
+    }
     public static void schedulePlacement(World w, int x, int y, int z, int ticks, String id) {
         Location location = new Location(w,x,y,z);
         Runnable task = () -> {changeBlock(location, id);};
@@ -70,5 +66,11 @@ public class ProviderUtility {
         Bukkit.getScheduler().scheduleSyncDelayedTask(BukkitController.getInstance(), task, ticks);
     }
 
+    public static <T> T getResourceByName(String name){
+        switch(name){
+            case "cube": return ResourceCube.create(s);
+        }
+        return null;
+    }
 
 }
