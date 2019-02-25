@@ -1,55 +1,66 @@
 package com.cocoapebbles.terraform.provider;
-/*
+
+import com.cocoapebbles.terraform.models.Model;
+import com.cocoapebbles.terraform.models.ResourceData;
 import com.cocoapebbles.terraform.models.cube.CubeResourceDataDAO;
 import com.cocoapebbles.terraform.models.cube.CubeResourceData;
 import com.cocoapebbles.terraform.controllers.BukkitController;
 import com.cocoapebbles.terraform.models.cube.Cube;
 import com.cocoapebbles.terraform.models.cube.CubeDimensions;
 import com.cocoapebbles.terraform.controllers.models.Model;
+import com.cocoapebbles.terraform.models.shape.CubeDimensions;
+import com.cocoapebbles.terraform.models.shape.Shape;
+import com.cocoapebbles.terraform.models.shape.ShapeResourceData;
 import com.cocoapebbles.terraform.utility.Utility;
 import org.bukkit.*;
+import org.bukkit.block.Block;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
+
+import static com.sun.javafx.tools.resource.DeployResource.Type.data;
 
 public class ResourceCube implements Resource{
 
 
-    public ArrayList<Location> getLocationList(CubeDimensions cubeDimensions, Location location) {
+    public ArrayList<Block> getRegionBlocks(CubeDimensions cubeDimensions, Location location) {
         int length = cubeDimensions.getLengthX();
         int width = cubeDimensions.getWidthZ();
         int height = cubeDimensions.getHeightY();
         World w = BukkitController.getWorld();
-        ArrayList<Location> locationList = new ArrayList<Location>();
+        ArrayList<Block> blocks = new ArrayList<Block>();
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < width; j++) {
                 for (int k = 0; k < height; k++) {
-                    locationList.add(new Location(w, location.getX()+k, location.getY()+i, location.getZ()+j));
+                    Location blockLocation = location.clone().add(k,i,j);
+                    blocks.add(w.getBlockAt(blockLocation));
                 }
             }
         }
-        return locationList;
+        return blocks;
     }
 
-    public ArrayList<String> getMaterialsList(ArrayList<Location> locationList){
-        ArrayList<String> materialsList = new ArrayList<String>();
-        for (Location location: locationList){
-            materialsList.add(ProviderUtility.checkBlock(location));
-        }
-        return materialsList;
-    }
-
+/*
     public Future<Model> create(ResourceData data) {
         String id = UUID.randomUUID().toString().substring(0,8);
         return create(data,id,true);
-    }
-    public Future<Model> create(ResourceData data, String id, boolean isNew){
-        CubeResourceData cubeResourceData = (CubeResourceData) data;
+    }*/
+    public Model create(ResourceData resourceData){
 
-        Cube cube = new Cube();
-        CubeDimensions cubeDimensions = cubeResourceData.getCubeDimensions();
+        ShapeResourceData shapeResourceData = (ShapeResourceData) resourceData;
+        Shape shape = new Shape();
+
+        CubeDimensions cubeDimensions = (CubeDimensions) shape.getShapeResourceData().getDimensions();
+        Location location = shapeResourceData.getLocation();
+        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions,location);
+        List<Material> previousData = blocks.stream().map(b->{return b.getBlockData().getMaterial();}).collect(Collectors.toList());
+        shapeResourceData.setPreviousData(previousData);
+        for(Block block : blocks){
+            ProviderUtility.
+        }
         ArrayList<Location> locationList = getLocationList(cubeDimensions,cubeResourceData.getLocation());
         ArrayList<String> oldMaterialList = getMaterialsList(locationList);
         ArrayList<String> newMaterialList = new ArrayList<String>();
@@ -114,4 +125,3 @@ public class ResourceCube implements Resource{
 
 
 }
-*/

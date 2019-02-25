@@ -3,6 +3,8 @@ package com.cocoapebbles.terraform.provider;
 import com.cocoapebbles.terraform.controllers.BukkitController;
 import com.cocoapebbles.terraform.enums.ResourceStatus;
 import com.cocoapebbles.terraform.models.DAOFactory;
+import com.cocoapebbles.terraform.models.Model;
+import com.cocoapebbles.terraform.models.ResourceData;
 import com.cocoapebbles.terraform.models.entity.Entity;
 import com.cocoapebbles.terraform.models.entity.EntityDAO;
 import com.cocoapebbles.terraform.models.entity.EntityResourceData;
@@ -13,7 +15,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class ResourceEntity implements Resource{
-    public static Entity create(EntityResourceData entityResourceData) throws IllegalStateException{
+    public Model create(ResourceData resourceData) throws IllegalStateException{
+        EntityResourceData entityResourceData = (EntityResourceData) resourceData;
         Entity entity = new Entity();
         String id = UUID.randomUUID().toString().substring(0,8);
         entity.setId(id);
@@ -31,7 +34,7 @@ public class ResourceEntity implements Resource{
         return entity;
     }
 
-    public static Entity read(String entityId) {
+    public Model read(String entityId) {
         EntityDAO entityDAO = DAOFactory.getEntityDAO();
         Entity entity = entityDAO.getEntity(entityId);
         EntityResourceData entityResourceData = entity.getEntityResourceData();
@@ -48,7 +51,8 @@ public class ResourceEntity implements Resource{
         return entity;
     }
 
-    public static Entity update(Entity entity) {
+    public Model update(Model model) {
+        Entity entity = (Entity) model;
         LivingEntity livingEntity = getLivingEntityByCustomName(entity.getEntityResourceData().getCustomName());
         if(livingEntity!=null){
             EntityResourceData entityResourceData = entity.getEntityResourceData();
@@ -58,7 +62,7 @@ public class ResourceEntity implements Resource{
     }
 
 
-    public static void delete(String entityId) {
+    public void delete(String entityId) {
         EntityDAO entityDAO = DAOFactory.getEntityDAO();
         Entity entity = entityDAO.getEntity(entityId);
         String customName = entity.getEntityResourceData().getCustomName();
@@ -69,7 +73,7 @@ public class ResourceEntity implements Resource{
         entityDAO.deleteEntity(entity);
     }
 
-    public static LivingEntity getLivingEntityByCustomName(String customName){
+    public LivingEntity getLivingEntityByCustomName(String customName){
         World world = BukkitController.getWorld();
         List<LivingEntity> livingEntityList = world.getLivingEntities();
         LivingEntity entity = null;

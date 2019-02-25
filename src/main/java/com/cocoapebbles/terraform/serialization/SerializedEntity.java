@@ -32,4 +32,18 @@ public class SerializedEntity implements Serializable {
         this.resourceStatus = resourceStatus;
     }
 
+    public Entity deserialize(){
+        Entity entity = new Entity();
+        entity.setId(id);
+        entity.setEntityResourceData(SerializedEntityAdapter.deserializeEntityResourceData(serializedEntityResourceData);
+        entity.setResourceStatus(resourceStatus);
+        return entity;
+    }
+
+    public void serialize(Entity entity){
+        id = entity.getId();
+        resourceStatus = entity.getResourceStatus();
+        serializedEntityResourceData = new SerializedEntityResourceData().serialize(entity.getEntityResourceData());
+    }
+
 }

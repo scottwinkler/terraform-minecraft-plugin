@@ -1,11 +1,12 @@
 package com.cocoapebbles.terraform.models.entity;
 
+import com.cocoapebbles.terraform.models.ResourceData;
 import com.cocoapebbles.terraform.serialization.SerializedEntityResourceData;
 import com.cocoapebbles.terraform.serialization.SerializationUtility;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 
-public class EntityResourceData {
+public class EntityResourceData implements ResourceData {
     private Location location;
     private EntityType entityType;
     private String customName;
