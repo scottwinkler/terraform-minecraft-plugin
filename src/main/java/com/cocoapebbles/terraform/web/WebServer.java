@@ -1,8 +1,8 @@
 package com.cocoapebbles.terraform.web;
 
-//import com.cocoapebbles.terraform.web.jersey.DAO;
 import com.cocoapebbles.terraform.web.resources.EntityResource;
-//import com.cocoapebbles.terraform.web.resources.CylinderResource;
+import com.cocoapebbles.terraform.web.resources.ShapeResource;
+import com.cocoapebbles.terraform.web.resources.ShapeJsonReader;
 import com.cocoapebbles.terraform.web.resources.EntityResource;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.eclipse.jetty.server.Handler;
@@ -10,10 +10,10 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.*;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import javax.inject.Singleton;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
-//import com.cocoapebbles.terraform.web.resources.CubeResource;
 import java.io.File;
 import java.util.logging.Logger;
 
@@ -71,6 +71,22 @@ public class WebServer {
             cubeContext.setContextPath("/cube");
             cubeContext.addServlet(holder,"/*");
 */
+            //shape servlet
+            ResourceConfig shapeResourceConfig = new ResourceConfig(ShapeResource.class);;
+            shapeResourceConfig.register(new AbstractBinder() {
+                @Override
+                protected void configure() {
+                    bind(ShapeJsonReader.class).in(Singleton.class);
+                    bind(logger).to(Logger.class);
+                    bind(p).to(JavaPlugin.class);
+                }
+            });
+            ServletContainer shapeContainer = new ServletContainer(shapeResourceConfig);
+            ServletHolder shapeHolder = new ServletHolder(shapeContainer);
+            ServletContextHandler shapeContext = new ServletContextHandler(ServletContextHandler.SESSIONS);
+            shapeContext.setContextPath("/shape");
+            shapeContext.addServlet(shapeHolder,"/*");
+
             //entity servlet
             ResourceConfig entityResourceConfig = new ResourceConfig(EntityResource.class);;
             entityResourceConfig.register(new AbstractBinder() {
@@ -105,6 +121,7 @@ public class WebServer {
             ContextHandlerCollection contexts = new ContextHandlerCollection();
             contexts.setHandlers(new Handler[]{
                     //cubeContext,entityContext,cylinderContext
+                    shapeContext,
                     entityContext
             });
             server.setHandler(contexts);
