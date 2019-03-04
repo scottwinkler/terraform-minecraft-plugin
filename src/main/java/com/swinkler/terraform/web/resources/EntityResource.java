@@ -34,9 +34,10 @@ public class EntityResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Response listEntities( @DefaultValue("100") @QueryParam("limit") Integer limit){
         List<Entity> entities = entityDAO.listEntities(limit);
-        GenericEntity<List<Entity>> genericEntity = new GenericEntity<>(entities);
+        GenericEntity<List<Entity>> genericEntity = new GenericEntity<List<Entity>>(entities){};
         return Response.status(200).header("Access-Control-Allow-Origin","*").entity(genericEntity).build();
     }
 
@@ -48,7 +49,7 @@ public class EntityResource {
         if(entity==null){
             return Response.status(400).build();
         }
-        GenericEntity<Entity> genericEntity = new GenericEntity<>(entity);
+        GenericEntity<Entity> genericEntity = new GenericEntity<Entity>(entity){};
         return Response.status(201).header("Access-Control-Allow-Origin","*").entity(genericEntity).build();
     }
 
@@ -60,7 +61,7 @@ public class EntityResource {
         if(entity==null){
             return Response.status(404).header("Access-Control-Allow-Origin","*").build();
         }
-        GenericEntity<Entity> genericEntity = new GenericEntity<>(entity);
+        GenericEntity<Entity> genericEntity = new GenericEntity<Entity>(entity){};
         return Response.status(200).header("Access-Control-Allow-Origin","*").entity(genericEntity).build();
     }
 
@@ -75,7 +76,7 @@ public class EntityResource {
         if(entity==null){
             return Response.status(404).header("Access-Control-Allow-Origin","*").build();
         }
-        GenericEntity<Entity> genericEntity = new GenericEntity<>(entity);
+        GenericEntity<Entity> genericEntity = new GenericEntity<Entity>(entity){};
         return Response.status(200).header("Access-Control-Allow-Origin","*").entity(genericEntity).build();
     }
 

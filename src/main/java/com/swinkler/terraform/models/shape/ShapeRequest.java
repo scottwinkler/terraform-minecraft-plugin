@@ -1,13 +1,16 @@
 package com.swinkler.terraform.models.shape;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.swinkler.terraform.models.location.Location;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import java.util.Map;
 
 public class ShapeRequest {
     private Location location;
     private ShapeType shapeType;
     private String material;
-    private Object dimensions;
+    private Map<String,Integer> dimensions;
 
     public Location getLocation() {
         return location;
@@ -33,26 +36,30 @@ public class ShapeRequest {
         this.material = material;
     }
 
-    public Object getDimensions() {
+    public Map<String,Integer> getDimensions() {
         return dimensions;
     }
 
-    public void setDimensions(Object dimensions) {
+    public void setDimensions(Map<String,Integer> dimensions) {
         this.dimensions = dimensions;
     }
 
+    @JsonIgnore
     public Material getBukkitMaterial(){
         return Material.valueOf(material);
     }
 
+    @JsonIgnore
     public void setBukkitMaterial(Material material){
         this.material = material.name();
     }
 
+    @JsonIgnore
     public org.bukkit.Location getBukkitLocation(){
         return location.getAsBukkitLocation();
     }
 
+    @JsonIgnore
     public void setBukkitLocation(org.bukkit.Location bukkitLocation){
         location = new Location(bukkitLocation);
     }

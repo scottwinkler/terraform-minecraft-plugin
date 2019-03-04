@@ -1,7 +1,9 @@
 package com.swinkler.terraform.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.swinkler.terraform.models.ResourceStatus;
 import com.swinkler.terraform.models.location.Location;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 
 import java.util.UUID;
@@ -12,6 +14,8 @@ public class Entity  {
     String entityType;
     String customName;
     ResourceStatus status;
+
+    public Entity(){}
 
     public Entity(EntityRequest entityRequest){
         id = "entity-"+ UUID.randomUUID().toString().substring(0,8);
@@ -61,18 +65,22 @@ public class Entity  {
         this.status = status;
     }
 
+    @JsonIgnore
     public EntityType getBukkitEntityType(){
         return EntityType.valueOf(entityType);
     }
 
+    @JsonIgnore
     public void setBukkitEntityType(EntityType bukkitEntityType){
         entityType = bukkitEntityType.name();
     }
 
+    @JsonIgnore
     public org.bukkit.Location getBukkitLocation(){
         return location.getAsBukkitLocation();
     }
 
+    @JsonIgnore
     public void setBukkitLocation(org.bukkit.Location bukkitLocation){
         location = new Location(bukkitLocation);
     }

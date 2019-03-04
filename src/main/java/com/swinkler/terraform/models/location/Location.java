@@ -1,5 +1,6 @@
 package com.swinkler.terraform.models.location;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.bukkit.Bukkit;
 
 public class Location {
@@ -7,6 +8,8 @@ public class Location {
     private int y;
     private int z;
     private String world;
+
+    public Location(){}
 
     public Location(org.bukkit.Location bukkitLocation){
         x = bukkitLocation.getBlockX();
@@ -47,6 +50,7 @@ public class Location {
         this.world = world;
     }
 
+    @JsonIgnore
     public org.bukkit.Location getAsBukkitLocation(){
         return new org.bukkit.Location(Bukkit.getWorld(world),(double)x,(double)y,(double)z);
     }

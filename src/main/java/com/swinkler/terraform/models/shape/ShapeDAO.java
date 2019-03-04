@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShapeDAO {
     private static ShapeDAO instance = null;
@@ -80,9 +81,11 @@ public class ShapeDAO {
 
     public List<Shape> listShapes(int limit){
         ArrayList<Shape> shapes = new ArrayList<>();
-        ArrayList<File> files = new ArrayList<>(FileUtils.listFiles(new File(dirPath),null,false));
-        for(int i =0;i<limit;i++){
-            String shapeId = files.get(i).getName().split(".")[0];
+        String[] extensions = {"json"};
+        ArrayList<File> files = new ArrayList<>(FileUtils.listFiles(new File(dirPath),extensions,false));
+        int end = Math.min(files.size(),limit);
+        for(int i =0;i<end;i++){
+            String shapeId = files.get(i).getName().replace(".json","");
             shapes.add(getShape(shapeId));
         }
 

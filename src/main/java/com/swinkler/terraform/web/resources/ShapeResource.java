@@ -34,9 +34,11 @@ public class ShapeResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Response listShapes( @DefaultValue("100") @QueryParam("limit") Integer limit){
+        logger.info("in list");
         List<Shape> shapes = shapeDAO.listShapes(limit);
-        GenericEntity<List<Shape>> genericShape = new GenericEntity<>(shapes);
+        GenericEntity<List<Shape>> genericShape = new GenericEntity<List<Shape>>(shapes){};
         return Response.status(200).header("Access-Control-Allow-Origin","*").entity(genericShape).build();
     }
 
@@ -44,11 +46,13 @@ public class ShapeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createShape(ShapeRequest request) {
+        logger.info("in create");
+        //ShapeRequest request = (ShapeRequest) o;
         Shape shape = resourceShape.create(request);
         if(shape==null){
             return Response.status(400).build();
         }
-        GenericEntity<Shape> genericShape = new GenericEntity<>(shape);
+        GenericEntity<Shape> genericShape = new GenericEntity<Shape>(shape){};
         return Response.status(201).header("Access-Control-Allow-Origin","*").entity(genericShape).build();
     }
 
@@ -60,7 +64,7 @@ public class ShapeResource {
         if(shape==null){
             return Response.status(404).header("Access-Control-Allow-Origin","*").build();
         }
-        GenericEntity<Shape> genericShape = new GenericEntity<>(shape);
+        GenericEntity<Shape> genericShape = new GenericEntity<Shape>(shape){};
         return Response.status(200).header("Access-Control-Allow-Origin","*").entity(genericShape).build();
     }
 
@@ -75,7 +79,7 @@ public class ShapeResource {
         if(shape==null){
             return Response.status(404).header("Access-Control-Allow-Origin","*").build();
         }
-        GenericEntity<Shape> genericShape = new GenericEntity<>(shape);
+        GenericEntity<Shape> genericShape = new GenericEntity<Shape>(shape){};
         return Response.status(200).header("Access-Control-Allow-Origin","*").entity(genericShape).build();
     }
 

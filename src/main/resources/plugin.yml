@@ -1,13 +1,13 @@
 name: Terraform
-main: com.cocoapebbles.terraform.Main
+main: com.swinkler.terraform.Main
 version: 1.0
 api-version: 1.13
 commands:
-   tf:
-      description: Allows you to interact with social media
-      usage: "Type '/twitter help' to see available commands"
-      permission: twitter
+   terraform:
+      description: Allows you to create resources in the world programatically
+      usage: "Type '/terraform help' to see available commands"
+      permission: terraform
 permissions:
-  tf:
-    description: Allows twitter command(s)
+  terraform:
+    description: Allows terraform command(s)
     default: true

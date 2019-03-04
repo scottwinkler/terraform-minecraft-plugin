@@ -6,7 +6,6 @@ import com.swinkler.terraform.models.shape.CubeDimensions;
 import com.swinkler.terraform.models.shape.ShapeDAO;
 import com.swinkler.terraform.models.shape.ShapeRequest;
 import com.swinkler.terraform.services.BukkitService;
-import com.cocoapebbles.terraform.models.shape.*;
 import com.swinkler.terraform.models.shape.Shape;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -43,9 +42,14 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     }
 
     public Shape read(String shapeId) {
+        BukkitService.getLogger().info(shapeId);
         ShapeDAO shapeDao = ShapeDAO.getInstance();
         Shape shape = shapeDao.getShape(shapeId);
-        CubeDimensions cubeDimensions = (CubeDimensions) shape.getDimensions();
+        //quit early if not found
+        if (shape==null){
+            return null;
+        }
+        CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
         Location location = shape.getBukkitLocation();
         ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location);
         Material material = shape.getBukkitMaterial();
@@ -66,10 +70,11 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         Shape oldShape = shapeDAO.getShape(shapeId);
         removeBlocks(oldShape);
         Shape shape = new Shape(shapeRequest);
+        shape.setPreviousData(oldShape.getPreviousData());
         shape.setId(oldShape.getId());
-        ArrayList<Block> placedBlocks = placeBlocks(shape);
         shape.setStatus(ResourceStatus.Updating);
         shapeDAO.updateShape(shape);
+        ArrayList<Block> placedBlocks = placeBlocks(shape);
 
         //Update state when the resource has finished creating
         int ticks = 2*placedBlocks.size();
@@ -89,8 +94,7 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         int ticks = shape.getPreviousData().size();
         ShapeDAO shapeDAO = DAOFactory.getShapeDAO();
         ProviderUtility.scheduleTask(() -> {
-            shape.setStatus(ResourceStatus.Ready);
-            shapeDAO.updateShape(shape);
+            shapeDAO.deleteShape(shape);
         }, ticks);
     }
 
@@ -113,8 +117,8 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     }
 
     public ArrayList<Block> placeBlocks(Shape shape) {
-        CubeDimensions cubeDimensions = (CubeDimensions) shape.getDimensions();
-        Location location = shape.getLocation().getAsBukkitLocation();
+        CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
+        Location location = shape.getBukkitLocation();
         ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location);
         Material material = shape.getBukkitMaterial();
         for (int i = 0; i < blocks.size(); i++) {
@@ -125,8 +129,8 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     }
 
     public void removeBlocks(Shape shape) {
-        CubeDimensions cubeDimensions = (CubeDimensions) shape.getDimensions();
-        Location location = shape.getLocation().getAsBukkitLocation();
+        CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
+        Location location = shape.getBukkitLocation();
         ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location);
         ArrayList<Material> previousData = new ArrayList<Material>(shape.getBukkitPreviousData());
         for (int i = 0; i < blocks.size(); i++) {

@@ -68,8 +68,8 @@ public class WebServer {
             ServletContainer container = new ServletContainer(resourceConfig);
             ServletHolder holder = new ServletHolder(container);
             ServletContextHandler shapeContext = new ServletContextHandler(ServletContextHandler.SESSIONS);
-            shapeContext.setContextPath(basePath+"/shapes");
-            shapeContext.addServlet(holder,"/*");
+            shapeContext.setContextPath(basePath);
+            shapeContext.addServlet(holder,"/shapes/*");
 
             //entity servlet
             ResourceConfig entityResourceConfig = new ResourceConfig(EntityResource.class);;
@@ -83,8 +83,8 @@ public class WebServer {
             ServletContainer entityContainer = new ServletContainer(entityResourceConfig);
             ServletHolder entityHolder = new ServletHolder(entityContainer);
             ServletContextHandler entityContext = new ServletContextHandler(ServletContextHandler.SESSIONS);
-            entityContext.setContextPath(basePath+"/entities");
-            entityContext.addServlet(entityHolder,"/*");
+            entityContext.setContextPath(basePath);
+            entityContext.addServlet(entityHolder,"/entities/*");
 
             ContextHandlerCollection contexts = new ContextHandlerCollection();
             contexts.setHandlers(new Handler[]{

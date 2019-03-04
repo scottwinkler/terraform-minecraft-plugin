@@ -1,6 +1,8 @@
 package com.swinkler.terraform.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.swinkler.terraform.models.location.Location;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 
 public class EntityRequest {
@@ -32,18 +34,22 @@ public class EntityRequest {
         this.customName = customName;
     }
 
+    @JsonIgnore
     public EntityType getBukkitEntityType(){
         return EntityType.valueOf(entityType);
     }
 
+    @JsonIgnore
     public void setBukkitEntityType(EntityType bukkitEntityType){
         entityType = bukkitEntityType.name();
     }
 
+    @JsonIgnore
     public org.bukkit.Location getBukkitLocation(){
         return location.getAsBukkitLocation();
     }
 
+    @JsonIgnore
     public void setBukkitLocation(org.bukkit.Location bukkitLocation){
         location = new Location(bukkitLocation);
     }

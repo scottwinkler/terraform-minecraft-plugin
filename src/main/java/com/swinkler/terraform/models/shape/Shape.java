@@ -1,28 +1,34 @@
 package com.swinkler.terraform.models.shape;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.swinkler.terraform.models.ResourceStatus;
 import com.swinkler.terraform.models.location.Location;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.Map;
 
 public class Shape {
     private String id;
     private Location location;
     private ShapeType shapeType;
     private String material;
-    private Object dimensions;
+    private Map<String,Integer> dimensions;
     private List<String> previousData;
     private ResourceStatus status;
+
+    public Shape(){}
 
     public Shape(ShapeRequest shapeRequest){
         status = ResourceStatus.Initializing;
         dimensions = shapeRequest.getDimensions();
         material = shapeRequest.getMaterial();
         shapeType = shapeRequest.getShapeType();
-        String shapeId = shapeType.name() +"-" +UUID.randomUUID().toString().substring(0, 8);
+        location = shapeRequest.getLocation();
+        String shapeId = shapeType.name().toLowerCase() +"-" +UUID.randomUUID().toString().substring(0, 8);
         id = shapeId;
     }
 
@@ -58,11 +64,11 @@ public class Shape {
         this.material = material;
     }
 
-    public Object getDimensions() {
+    public Map<String,Integer> getDimensions() {
         return dimensions;
     }
 
-    public void setDimensions(Object dimensions) {
+    public void setDimensions(Map<String,Integer> dimensions) {
         this.dimensions = dimensions;
     }
 
@@ -82,14 +88,17 @@ public class Shape {
         this.status = status;
     }
 
+    @JsonIgnore
     public Material getBukkitMaterial(){
         return Material.valueOf(material);
     }
 
+    @JsonIgnore
     public void setBukkitMaterial(Material material){
         this.material = material.name();
     }
 
+    @JsonIgnore
     public List<Material> getBukkitPreviousData(){
         ArrayList<Material> bukkitPreviousData = new ArrayList<>();
         for(String s: previousData){
@@ -98,6 +107,7 @@ public class Shape {
         return bukkitPreviousData;
     }
 
+    @JsonIgnore
     public void setBukkitPreviousData(List<Material> bukkitPreviousData){
         ArrayList<String> previousData = new ArrayList<>();
         for (Material m : bukkitPreviousData){
@@ -106,10 +116,12 @@ public class Shape {
         this.previousData = previousData;
     }
 
+    @JsonIgnore
     public org.bukkit.Location getBukkitLocation(){
         return location.getAsBukkitLocation();
     }
 
+    @JsonIgnore
     public void setBukkitLocation(org.bukkit.Location bukkitLocation){
         location = new Location(bukkitLocation);
     }

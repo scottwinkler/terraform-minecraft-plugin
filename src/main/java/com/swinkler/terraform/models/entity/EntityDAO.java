@@ -79,9 +79,11 @@ public class EntityDAO {
 
     public List<Entity> listEntities(int limit){
         ArrayList<Entity> entities = new ArrayList<>();
-        ArrayList<File> files = new ArrayList<>(FileUtils.listFiles(new File(dirPath),null,false));
-        for(int i =0;i<limit;i++){
-            String entityId = files.get(i).getName().split(".")[0];
+        String[] extensions = {"json"};
+        ArrayList<File> files = new ArrayList<>(FileUtils.listFiles(new File(dirPath),extensions,false));
+        int end = Math.min(files.size(),limit);
+        for(int i =0;i<end;i++){
+            String entityId = files.get(i).getName().replace(".json","");
             entities.add(getEntity(entityId));
         }
 

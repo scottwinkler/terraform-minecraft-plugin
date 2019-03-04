@@ -14,7 +14,9 @@ public class ResourceShape implements Resource<ShapeRequest,Shape> {
     }
 
     public Resource<ShapeRequest,Shape> getResourceById(String shapeId){
-        ShapeType shapeType = ShapeType.valueOf(shapeId.split("-")[0]);
+        String input = shapeId.split("-")[0];
+        String capitalized = input.substring(0, 1).toUpperCase() + input.substring(1);
+        ShapeType shapeType = ShapeType.valueOf(capitalized);
         return getResourceByShapeType(shapeType);
     }
 
@@ -29,7 +31,6 @@ public class ResourceShape implements Resource<ShapeRequest,Shape> {
     public Shape update(String shapeId, ShapeRequest shapeRequest) {
         return getResourceByShapeType(shapeRequest.getShapeType()).update(shapeId,shapeRequest);
     }
-
 
     public void delete(String shapeId) {
        getResourceById(shapeId).delete(shapeId);
