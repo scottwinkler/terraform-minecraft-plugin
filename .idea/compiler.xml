@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cocoapebbles-terraform" />
+        <module name="terraform-minecraft-plugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="cocoapebbles-terraform" target="1.8" />
+      <module name="terraform-minecraft-plugin" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
