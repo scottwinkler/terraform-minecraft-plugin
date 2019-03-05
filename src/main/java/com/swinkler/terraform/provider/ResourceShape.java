@@ -9,6 +9,7 @@ public class ResourceShape implements Resource<ShapeRequest,Shape> {
     public Resource<ShapeRequest,Shape> getResourceByShapeType(ShapeType shapeType){
         switch(shapeType){
             case Cube: return new ResourceCube();
+            case Cylinder: return new ResourceCylinder();
             default: return null;
         }
     }

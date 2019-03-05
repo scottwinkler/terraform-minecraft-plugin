@@ -2,12 +2,3 @@ name: Terraform
 main: com.swinkler.terraform.Main
 version: 1.0
 api-version: 1.13
-commands:
-   terraform:
-      description: Allows you to create resources in the world programatically
-      usage: "Type '/terraform help' to see available commands"
-      permission: terraform
-permissions:
-  terraform:
-    description: Allows terraform command(s)
-    default: true

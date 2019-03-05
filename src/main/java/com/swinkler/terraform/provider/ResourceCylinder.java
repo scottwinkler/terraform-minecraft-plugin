@@ -1,22 +1,105 @@
 package com.swinkler.terraform.provider;
-/*
-import com.cocoapebbles.terraform.models.cylinder.CylinderResourceDataDAO;
-import com.cocoapebbles.terraform.models.cylinder.CylinderResourceData;
-import com.cocoapebbles.terraform.controllers.BukkitController;
-import com.cocoapebbles.terraform.models.cylinder.Cylinder;
-import com.cocoapebbles.terraform.models.cylinder.CylinderDimensions;
-import com.cocoapebbles.terraform.controllers.models.Model;
-import com.cocoapebbles.terraform.utility.Utility;
-import org.bukkit.Location;
-import org.bukkit.World;
+
+import com.swinkler.terraform.models.ResourceStatus;
+import com.swinkler.terraform.models.DAOFactory;
+import com.swinkler.terraform.models.shape.CylinderDimensions;
+import com.swinkler.terraform.models.shape.ShapeDAO;
+import com.swinkler.terraform.models.shape.ShapeRequest;
+import com.swinkler.terraform.services.BukkitService;
+import com.swinkler.terraform.models.shape.Shape;
+import org.bukkit.*;
+import org.bukkit.block.Block;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.Future;
+;
+import java.util.stream.Collectors;
 
-public class ResourceCylinder implements Resource {
-    public ArrayList<Location> getLocationList(CylinderDimensions cylinderDimensions, Location location) {
+public class ResourceCylinder implements Resource<ShapeRequest, Shape> {
+
+    public Shape create(ShapeRequest shapeRequest) {
+        // Instantiate new shape and set attributes from request data
+        Shape shape = new Shape(shapeRequest);
+
+        // Place blocks in world
+        ArrayList<Block> placedBlocks = placeBlocks(shape);
+        List<Material> previousData = placedBlocks.stream().map(b -> {
+            return b.getBlockData().getMaterial();
+        }).collect(Collectors.toList());
+        shape.setBukkitPreviousData(previousData);
+
+        // Save shape in DAO
+        ShapeDAO shapeDAO = DAOFactory.getShapeDAO();
+        shapeDAO.saveShape(shape);
+
+        // Update state when the resource has finished creating
+        ProviderUtility.scheduleTask(() -> {
+            shape.setStatus(ResourceStatus.Ready);
+            shapeDAO.updateShape(shape);
+        }, placedBlocks.size());
+
+        return shape;
+    }
+
+    public Shape read(String shapeId) {
+        BukkitService.getLogger().info(shapeId);
+        ShapeDAO shapeDao = ShapeDAO.getInstance();
+        Shape shape = shapeDao.getShape(shapeId);
+        //quit early if not found
+        if (shape==null){
+            return null;
+        }
+        CylinderDimensions cylinderDimensions = new CylinderDimensions(shape.getDimensions());
+        Location location = shape.getBukkitLocation();
+        ArrayList<Block> blocks = getRegionBlocks(cylinderDimensions, location);
+        Material material = shape.getBukkitMaterial();
+        //if the materials dont match then update the shape data to effectively taint the resource
+        for (Block block: blocks){
+            Material blockMaterial = block.getBlockData().getMaterial();
+            if(!blockMaterial.equals(material)){
+                shape.setBukkitMaterial(blockMaterial);
+                shapeDao.updateShape(shape);
+                break;
+            }
+        }
+        return shape;
+    }
+
+    public Shape update(String shapeId, ShapeRequest shapeRequest) {
+        ShapeDAO shapeDAO = ShapeDAO.getInstance();
+        Shape oldShape = shapeDAO.getShape(shapeId);
+        removeBlocks(oldShape);
+        Shape shape = new Shape(shapeRequest);
+        shape.setPreviousData(oldShape.getPreviousData());
+        shape.setId(oldShape.getId());
+        shape.setStatus(ResourceStatus.Updating);
+        shapeDAO.updateShape(shape);
+        ArrayList<Block> placedBlocks = placeBlocks(shape);
+
+        //Update state when the resource has finished creating
+        int ticks = 2*placedBlocks.size();
+        ProviderUtility.scheduleTask(() -> {
+            shape.setStatus(ResourceStatus.Ready);
+            shapeDAO.updateShape(shape);
+        }, ticks);
+        return shape;
+    }
+
+
+    public void delete(String shapeId) {
+        Shape shape = read(shapeId);
+        removeBlocks(shape);
+
+        //Update state when the resource has finished creating
+        int ticks = shape.getPreviousData().size();
+        ShapeDAO shapeDAO = DAOFactory.getShapeDAO();
+        ProviderUtility.scheduleTask(() -> {
+            shapeDAO.deleteShape(shape);
+        }, ticks);
+    }
+    
+    //this is the only part unique to cylinder. should consider a way to make this more general
+    public ArrayList<Block> getRegionBlocks(CylinderDimensions cylinderDimensions, Location location) {
         int radius = cylinderDimensions.getRadius();
         int height = cylinderDimensions.getHeight();
         int x = radius - 1;
@@ -24,18 +107,19 @@ public class ResourceCylinder implements Resource {
         int dx = 1;
         int dy = 1;
         int err = dx - (radius * 2);
-        World w = BukkitController.getWorld();
-        ArrayList<Location> locationList = new ArrayList<Location>();
+        World w = BukkitService.getWorld();
+        ArrayList<Block> blocks = new ArrayList<Block>();
         while (x >= y) {
             for (int k = 0; k<height; k++) {
-                locationList.add(new Location(w, location.getX()+x, location.getY()+k, location.getZ()+y));
-                locationList.add(new Location(w, location.getX()+y, location.getY()+k, location.getZ()+x));
-                locationList.add(new Location(w, location.getX()-y, location.getY()+k, location.getZ()+x));
-                locationList.add(new Location(w, location.getX()-x, location.getY()+k, location.getZ()+y));
-                locationList.add(new Location(w, location.getX()-x, location.getY()+k, location.getZ()-y));
-                locationList.add(new Location(w, location.getX()-y, location.getY()+k, location.getZ()-x));
-                locationList.add(new Location(w, location.getX()+y, location.getY()+k, location.getZ()-x));
-                locationList.add(new Location(w, location.getX()+x, location.getY()+k, location.getZ()-y));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()+x, location.getY()+k, location.getZ()+y)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()+y, location.getY()+k, location.getZ()+x)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()-y, location.getY()+k, location.getZ()+x)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()-x, location.getY()+k, location.getZ()+y)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()-x, location.getY()+k, location.getZ()-y)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()-y, location.getY()+k, location.getZ()-x)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()+y, location.getY()+k, location.getZ()-x)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()+y, location.getY()+k, location.getZ()-x)));
+                blocks.add(w.getBlockAt(new Location(w, location.getX()+x, location.getY()+k, location.getZ()-y)));
             }
             if (err <= 0) {
                 y++;
@@ -49,86 +133,30 @@ public class ResourceCylinder implements Resource {
                 err += dx - (radius * 2);
             }
         }
-        return locationList;
+        return blocks;
     }
 
-    public ArrayList<String> getMaterialsList(ArrayList<Location> locationList){
-        ArrayList<String> materialsList = new ArrayList<String>();
-        for (Location location: locationList){
-            materialsList.add(ProviderUtility.checkBlock(location));
+    public ArrayList<Block> placeBlocks(Shape shape) {
+        CylinderDimensions cylinderDimensions = new CylinderDimensions(shape.getDimensions());
+        Location location = shape.getBukkitLocation();
+        ArrayList<Block> blocks = getRegionBlocks(cylinderDimensions, location);
+        Material material = shape.getBukkitMaterial();
+        for (int i = 0; i < blocks.size(); i++) {
+            Block block = blocks.get(i);
+            ProviderUtility.scheduleSetBlock(block, material, i);
         }
-        return materialsList;
+        return blocks;
     }
 
-
-    public Future<Model> create(ResourceData data) {
-        String id = UUID.randomUUID().toString().substring(0,8);
-        return create(data,id,true);
-    }
-    public Future<Model> create(ResourceData data, String id, boolean isNew){
-        CylinderResourceData cylinderResourceData = (CylinderResourceData) data;
-
-        Cylinder cylinder = new Cylinder();
-        CylinderDimensions cylinderDimensions = cylinderResourceData.getCylinderDimensions();
-        ArrayList<Location> locationList = getLocationList(cylinderDimensions, cylinderResourceData.getLocation());
-        ArrayList<String> oldMaterialList = getMaterialsList(locationList);
-        ArrayList<String> newMaterialList = new ArrayList<String>();
-        for(int i =0;i<locationList.size();i++){
-            Location location = locationList.get(i);
-            ProviderUtility.schedulePlacement(location, i, cylinderResourceData.getMaterialId());
-            newMaterialList.add(cylinderResourceData.getMaterialId());
+    public void removeBlocks(Shape shape) {
+        CylinderDimensions cylinderDimensions = new CylinderDimensions(shape.getDimensions());
+        Location location = shape.getBukkitLocation();
+        ArrayList<Block> blocks = getRegionBlocks(cylinderDimensions, location);
+        ArrayList<Material> previousData = new ArrayList<Material>(shape.getBukkitPreviousData());
+        for (int i = 0; i < blocks.size(); i++) {
+            Block block = blocks.get(i);
+            Material material = previousData.get(i);
+            ProviderUtility.scheduleSetBlock(block, material, i);
         }
-        cylinder.setCylinderDimensions(cylinderDimensions);
-        cylinder.setId(id);
-        cylinder.setLocation(ProviderUtility.serializeLocation(cylinderResourceData.getLocation()));
-        cylinder.setMaterialId(cylinderResourceData.getMaterialId());
-        if(isNew){
-            cylinder.setPreviousData(oldMaterialList);
-        } else{
-            CylinderResourceDataDAO cylinderDAO = new CylinderResourceDataDAO();
-            Cylinder c = cylinderDAO.getCylinder(id);
-            cylinder.setPreviousData(c.getPreviousData());
-        }
-        cylinder.setCurrentData(newMaterialList);
-        cylinder.setType("cylinder");
-
-        return ProviderUtility.wrapFuture(cylinder,locationList.size());
-    }
-
-    public Model read(String cylinderId) {
-        Cylinder cylinder = new CylinderResourceDataDAO().getCylinder(cylinderId);
-        ArrayList<Location> locationList = getLocationList(cylinder.getCylinderDimensions(), ProviderUtility.deserializeLocation(cylinder.getLocation()));
-        ArrayList<String> currentMaterials = getMaterialsList(locationList);
-
-        Cylinder newCylinder = new Cylinder();
-        newCylinder.setType("cylinder");
-        newCylinder.setPreviousData(cylinder.getPreviousData());
-        newCylinder.setMaterialId(cylinder.getMaterialId());
-        newCylinder.setLocation(cylinder.getLocation());
-        newCylinder.setId(cylinder.getId());
-        newCylinder.setCylinderDimensions(cylinder.getCylinderDimensions());
-        newCylinder.setCurrentData(currentMaterials);
-
-        return newCylinder;
-    }
-
-    public Future<Model> update(ResourceData data, String cylinderId) {
-        CylinderResourceData cylinderResourceData = (CylinderResourceData) data;
-        Cylinder cylinder = (Cylinder) read(cylinderId);
-        delete(cylinderId);
-        return create(data,cylinder.getId(),false);
-    }
-
-    public Future<Model> delete(String cylinderId) {
-        Cylinder cylinder = (Cylinder) read(cylinderId);
-        ArrayList<Location> locationList = getLocationList(cylinder.getCylinderDimensions(), ProviderUtility.deserializeLocation(cylinder.getLocation()));
-        List<String> materialsList = cylinder.getPreviousData();
-        for(int i =0;i<locationList.size();i++) {
-            Location location = locationList.get(i);
-            String blockType = materialsList.get(i);
-            ProviderUtility.schedulePlacement(location, i, blockType);
-        }
-        return ProviderUtility.wrapFuture(cylinder,locationList.size());
     }
 }
-*/
