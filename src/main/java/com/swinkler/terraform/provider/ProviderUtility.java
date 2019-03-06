@@ -28,7 +28,7 @@ public class ProviderUtility {
             BlockState blockState = block.getState();
             blockState.setType(material);
             if(particle!=null){
-                world.spawnParticle(particle,location,0);
+                world.spawnParticle(particle,location,1);
             }
             blockState.update(true);
         };

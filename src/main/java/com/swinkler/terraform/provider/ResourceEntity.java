@@ -16,7 +16,10 @@ import java.util.concurrent.Future;
 public class ResourceEntity implements Resource<EntityRequest, Entity> {
     public Entity create(EntityRequest entityRequest) {
         Entity entity = new Entity(entityRequest);
-        placeEntity(entity);
+        org.bukkit.entity.Entity newEntity = placeEntity(entity);
+        if(newEntity==null){
+            return null;
+        }
         entity.setStatus(ResourceStatus.Ready);
         DAOFactory.getEntityDAO().saveEntity(entity);
         return entity;
@@ -31,6 +34,7 @@ public class ResourceEntity implements Resource<EntityRequest, Entity> {
         if (livingEntity != null) {
             entity.setBukkitLocation(livingEntity.getLocation());
             entityDAO.updateEntity(entity);
+            entity = entityDAO.getEntity(entityId);
         } else {
             entityDAO.deleteEntity(entity);
             return null;
@@ -50,6 +54,7 @@ public class ResourceEntity implements Resource<EntityRequest, Entity> {
             placeEntity(entity);
         }
         else{
+            //get thw old entity and update it
             org.bukkit.entity.Entity bukkitEntity = getEntity(oldEntity.getCustomName(),oldEntity.getBukkitEntityType());
             if (bukkitEntity != null) {
                 bukkitEntity.teleport(entity.getBukkitLocation());
@@ -92,7 +97,8 @@ public class ResourceEntity implements Resource<EntityRequest, Entity> {
         org.bukkit.entity.Entity livingEntity = getEntity(customName,entity.getBukkitEntityType());
         //if entity already exists then quit
         if (livingEntity != null) {
-            throw new IllegalStateException("Entity with name: " + customName + " already exists!");
+            BukkitService.getLogger().info( "Entity with name: " + customName + " already exists!");
+            return null;
         }
 
         Future<org.bukkit.entity.Entity> future = ProviderUtility.scheduleEntity(entity, 0);

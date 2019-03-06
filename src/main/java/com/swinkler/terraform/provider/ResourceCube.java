@@ -93,6 +93,8 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         //Update state when the resource has finished creating
         int ticks = shape.getPreviousData().size();
         ShapeDAO shapeDAO = DAOFactory.getShapeDAO();
+        shape.setStatus(ResourceStatus.Deleting);
+        shapeDAO.updateShape(shape);
         ProviderUtility.scheduleTask(() -> {
             shapeDAO.deleteShape(shape);
         }, ticks);
@@ -108,7 +110,7 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < width; j++) {
                 for (int k = 0; k < height; k++) {
-                    Location blockLocation = location.clone().add(k, i, j);
+                    Location blockLocation = location.clone().add(i,k,j);
                     blocks.add(w.getBlockAt(blockLocation));
                 }
             }
@@ -123,7 +125,7 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         Material material = shape.getBukkitMaterial();
         for (int i = 0; i < blocks.size(); i++) {
             Block block = blocks.get(i);
-            ProviderUtility.scheduleSetBlock(block, material, i);
+            ProviderUtility.scheduleSetBlock(block, material, i,Particle.EXPLOSION_NORMAL);
         }
         return blocks;
     }

@@ -93,6 +93,8 @@ public class ResourceCylinder implements Resource<ShapeRequest, Shape> {
         //Update state when the resource has finished creating
         int ticks = shape.getPreviousData().size();
         ShapeDAO shapeDAO = DAOFactory.getShapeDAO();
+        shape.setStatus(ResourceStatus.Deleting);
+        shapeDAO.updateShape(shape);
         ProviderUtility.scheduleTask(() -> {
             shapeDAO.deleteShape(shape);
         }, ticks);
@@ -100,13 +102,13 @@ public class ResourceCylinder implements Resource<ShapeRequest, Shape> {
     
     //this is the only part unique to cylinder. should consider a way to make this more general
     public ArrayList<Block> getRegionBlocks(CylinderDimensions cylinderDimensions, Location location) {
-        int radius = cylinderDimensions.getRadius();
-        int height = cylinderDimensions.getHeight();
-        int x = radius - 1;
-        int y = 0;
-        int dx = 1;
-        int dy = 1;
-        int err = dx - (radius * 2);
+        double radius = cylinderDimensions.getRadius();
+        double height = cylinderDimensions.getHeight();
+        double x = radius - 1;
+        double y = 0;
+        double dx = 1;
+        double dy = 1;
+        double err = radius - (radius * 2);
         World w = BukkitService.getWorld();
         ArrayList<Block> blocks = new ArrayList<Block>();
         while (x >= y) {
@@ -143,7 +145,7 @@ public class ResourceCylinder implements Resource<ShapeRequest, Shape> {
         Material material = shape.getBukkitMaterial();
         for (int i = 0; i < blocks.size(); i++) {
             Block block = blocks.get(i);
-            ProviderUtility.scheduleSetBlock(block, material, i);
+            ProviderUtility.scheduleSetBlock(block, material, i,Particle.EXPLOSION_NORMAL);
         }
         return blocks;
     }
