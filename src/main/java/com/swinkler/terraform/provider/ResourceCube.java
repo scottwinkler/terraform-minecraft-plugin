@@ -20,9 +20,9 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     public Shape create(ShapeRequest shapeRequest) {
         // Instantiate new shape and set attributes from request data
         Shape shape = new Shape(shapeRequest);
-
+        boolean hollow = shape.getHollow();
         // Place blocks in world
-        ArrayList<Block> placedBlocks = placeBlocks(shape, true);
+        ArrayList<Block> placedBlocks = placeBlocks(shape, hollow);
         List<Material> previousData = placedBlocks.stream().map(b -> {
             return b.getBlockData().getMaterial();
         }).collect(Collectors.toList());
@@ -45,13 +45,14 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         BukkitService.getLogger().info(shapeId);
         ShapeDAO shapeDao = ShapeDAO.getInstance();
         Shape shape = shapeDao.getShape(shapeId);
+        boolean hollow = shape.getHollow();
         //quit early if not found
         if (shape==null){
             return null;
         }
         CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
         Location location = shape.getBukkitLocation();
-        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location, true);
+        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location, hollow);
         Material material = shape.getBukkitMaterial();
         //if the materials dont match then update the shape data to effectively taint the resource
         for (Block block: blocks){
@@ -70,11 +71,12 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         Shape oldShape = shapeDAO.getShape(shapeId);
         removeBlocks(oldShape, true);
         Shape shape = new Shape(shapeRequest);
+        boolean hollow = shape.getHollow();
         shape.setPreviousData(oldShape.getPreviousData());
         shape.setId(oldShape.getId());
         shape.setStatus(ResourceStatus.Updating);
         shapeDAO.updateShape(shape);
-        ArrayList<Block> placedBlocks = placeBlocks(shape, true);
+        ArrayList<Block> placedBlocks = placeBlocks(shape, hollow);
 
         //Update state when the resource has finished creating
         int ticks = 2*placedBlocks.size();

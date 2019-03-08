@@ -15,6 +15,7 @@ public class Shape {
     private String id;
     private Location location;
     private ShapeType shapeType;
+    private boolean hollow=false;
     private String material;
     private Map<String,Integer> dimensions;
     private List<String> previousData;
@@ -86,6 +87,14 @@ public class Shape {
 
     public void setStatus(ResourceStatus status) {
         this.status = status;
+    }
+
+    public boolean getHollow() {
+        return hollow;
+    }
+
+    public void setHollow(boolean hollow) {
+        this.hollow = hollow;
     }
 
     @JsonIgnore

@@ -32,7 +32,7 @@ public class ProviderUtility {
     private static int skipTicks=4;
     private static double createTicks=(createSeconds*ticksPerSecond)/skipTicks;
     public static void scheduleSetBlocks(List<Block> blocks, Material material,  Particle particle){
-	int batchSize = (int)(blocks.size()/createTicks);
+	int batchSize = (int)(blocks.size()/createTicks)+1;
         int i = 0;
         for (List<Block> batchBlocks : Lists.partition(blocks, batchSize)) {
             scheduleSetBlocks(batchBlocks, material, i, particle);
