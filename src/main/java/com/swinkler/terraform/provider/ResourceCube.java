@@ -20,9 +20,9 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     public Shape create(ShapeRequest shapeRequest) {
         // Instantiate new shape and set attributes from request data
         Shape shape = new Shape(shapeRequest);
-
+        boolean hollow = shape.getHollow();
         // Place blocks in world
-        ArrayList<Block> placedBlocks = placeBlocks(shape);
+        ArrayList<Block> placedBlocks = placeBlocks(shape, hollow);
         List<Material> previousData = placedBlocks.stream().map(b -> {
             return b.getBlockData().getMaterial();
         }).collect(Collectors.toList());
@@ -36,7 +36,7 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         ProviderUtility.scheduleTask(() -> {
             shape.setStatus(ResourceStatus.Ready);
             shapeDAO.updateShape(shape);
-        }, placedBlocks.size());
+        }, (int)0.005*placedBlocks.size()*2);
 
         return shape;
     }
@@ -45,13 +45,14 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         BukkitService.getLogger().info(shapeId);
         ShapeDAO shapeDao = ShapeDAO.getInstance();
         Shape shape = shapeDao.getShape(shapeId);
+        boolean hollow = shape.getHollow();
         //quit early if not found
         if (shape==null){
             return null;
         }
         CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
         Location location = shape.getBukkitLocation();
-        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location);
+        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location, hollow);
         Material material = shape.getBukkitMaterial();
         //if the materials dont match then update the shape data to effectively taint the resource
         for (Block block: blocks){
@@ -68,13 +69,14 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     public Shape update(String shapeId, ShapeRequest shapeRequest) {
         ShapeDAO shapeDAO = ShapeDAO.getInstance();
         Shape oldShape = shapeDAO.getShape(shapeId);
-        removeBlocks(oldShape);
+        removeBlocks(oldShape, true);
         Shape shape = new Shape(shapeRequest);
+        boolean hollow = shape.getHollow();
         shape.setPreviousData(oldShape.getPreviousData());
         shape.setId(oldShape.getId());
         shape.setStatus(ResourceStatus.Updating);
         shapeDAO.updateShape(shape);
-        ArrayList<Block> placedBlocks = placeBlocks(shape);
+        ArrayList<Block> placedBlocks = placeBlocks(shape, hollow);
 
         //Update state when the resource has finished creating
         int ticks = 2*placedBlocks.size();
@@ -88,7 +90,7 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
 
     public void delete(String shapeId) {
         Shape shape = read(shapeId);
-        removeBlocks(shape);
+        removeBlocks(shape, true);
 
         //Update state when the resource has finished creating
         int ticks = shape.getPreviousData().size();
@@ -101,16 +103,25 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
     }
 
 
-    public ArrayList<Block> getRegionBlocks(CubeDimensions cubeDimensions, Location location) {
+    public ArrayList<Block> getRegionBlocks(CubeDimensions cubeDimensions, Location location, boolean hollow) {
         int length = cubeDimensions.getLengthX();
+        int lengthDir = length < 0 ? -1 : 1;
         int width = cubeDimensions.getWidthZ();
+        int widthDir = width < 0 ? -1 : 1;
         int height = cubeDimensions.getHeightY();
+        int heightDir = height < 0 ? -1 : 1;
+        length *= lengthDir;
+        width *= widthDir;
+        height *= heightDir;
         World w = BukkitService.getWorld();
         ArrayList<Block> blocks = new ArrayList<Block>();
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < width; j++) {
-                for (int k = 0; k < height; k++) {
-                    Location blockLocation = location.clone().add(i,k,j);
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < length; x++) {
+                for (int z = 0; z < width; z++) {
+                    if (hollow && (z != 0 && z != width-1) && (x != 0 && x != length-1) && (y > 0 && y < height-1))
+                        continue;
+                    Location blockLocation = location.clone().add(x*lengthDir,y*heightDir,z*widthDir);
                     blocks.add(w.getBlockAt(blockLocation));
                 }
             }
@@ -118,27 +129,24 @@ public class ResourceCube implements Resource<ShapeRequest, Shape> {
         return blocks;
     }
 
-    public ArrayList<Block> placeBlocks(Shape shape) {
+    public ArrayList<Block> placeBlocks(Shape shape, boolean hollow) {
         CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
         Location location = shape.getBukkitLocation();
-        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location);
+        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location, hollow);
         Material material = shape.getBukkitMaterial();
-        for (int i = 0; i < blocks.size(); i++) {
-            Block block = blocks.get(i);
-            ProviderUtility.scheduleSetBlock(block, material, i,Particle.EXPLOSION_NORMAL);
-        }
+        ProviderUtility.scheduleSetBlocks(blocks, material, Particle.EXPLOSION_NORMAL);
         return blocks;
     }
 
-    public void removeBlocks(Shape shape) {
+    public void removeBlocks(Shape shape, boolean hollow) {
         CubeDimensions cubeDimensions = new CubeDimensions(shape.getDimensions());
         Location location = shape.getBukkitLocation();
-        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location);
+        ArrayList<Block> blocks = getRegionBlocks(cubeDimensions, location, hollow);
         ArrayList<Material> previousData = new ArrayList<Material>(shape.getBukkitPreviousData());
         for (int i = 0; i < blocks.size(); i++) {
             Block block = blocks.get(i);
             Material material = previousData.get(i);
-            ProviderUtility.scheduleSetBlock(block, material, i);
+            ProviderUtility.scheduleSetBlock(block, material, 0);
         }
     }
 }
